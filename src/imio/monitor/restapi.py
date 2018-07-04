@@ -2,11 +2,9 @@
 from DateTime import DateTime
 from plone import api
 from plone.rest.service import Service
-from plone.restapi.interfaces import ISerializeToJson
-from zope.component import queryMultiAdapter
 from zope.interface import implementer
 from zope.publisher.interfaces import IPublishTraverse
-from Zope2 import app as App
+
 import json
 
 

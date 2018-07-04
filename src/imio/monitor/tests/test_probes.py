@@ -7,9 +7,7 @@ from plone.app.testing import SITE_OWNER_NAME
 from plone.app.testing import SITE_OWNER_PASSWORD
 from plone.app.testing import TEST_USER_ID
 from plone.restapi.testing import RelativeSession
-from Products.MailHost.interfaces import IMailHost
 from imio.monitor.testing import IMIO_MONITOR_FUNCTIONAL_TESTING  # noqa
-from zope.component import getUtility
 
 # import requests
 import transaction
@@ -65,7 +63,7 @@ class TestProbes(unittest.TestCase):
         results = response.json()
         self.assertEqual(results[probe], 0)
 
-        user = api.user.create(username='jamesbond', email='james.bond@imio.be')
+        user = api.user.create(username='jamesbond', email='jamesbond@imio.be')
         user.setProperties({'last_login_time': DateTime()})
         transaction.commit()
         # make request with admin user
