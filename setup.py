@@ -15,7 +15,7 @@ long_description = '\n\n'.join([
 setup(
     name='imio.monitor',
     version='1.0a1',
-    description="Package used to monitor our instances based on plone.restapi",
+    description='Package used to monitor our instances based on plone.restapi',
     long_description=long_description,
     # Get more from https://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[
@@ -44,11 +44,12 @@ setup(
         'Products.GenericSetup>=1.8.2',
         'setuptools',
         'z3c.jbot',
-        'plone.app.dexterity<=2.1.1',
+        # 'plone.app.dexterity<=2.1.1',
         'plone.app.referenceablebehavior',
         'plone.app.relationfield',
         'plone.app.lockingbehavior',
         'plone.schema',
+        'plone.restapi',
     ],
     extras_require={
         'test': [
@@ -58,6 +59,10 @@ setup(
             # plone_coredev tests as of 2016-04-01.
             'plone.testing>=5.0.0',
             'plone.app.robotframework[debug]',
+            'plone.app.contenttypes',
+            'collective.MockMailHost',
+            'requests',
+            'ipdb'
         ],
     },
     entry_points="""

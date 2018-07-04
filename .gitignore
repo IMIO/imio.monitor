@@ -37,3 +37,4 @@ report.html
 !.gitkeep
 !.travis.yml
 !src/imio
+share/
