@@ -34,7 +34,7 @@ class TestProbes(unittest.TestCase):
         self.assertEqual(200, response.status_code)
         results = response.json()
         self.assertIn('last_modified_plone_object_time', results['probes'])
-        self.assertEqual(len(results['probes']), 1)
+        self.assertEqual(len(results['probes']), 2)
 
     def test_probe_last_modified_plone_object_time(self):
         probe = 'last_modified_plone_object_time'
