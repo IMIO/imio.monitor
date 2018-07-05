@@ -72,3 +72,17 @@ class TestProbes(unittest.TestCase):
         self.assertEqual(200, response.status_code)
         results = response.json()
         self.assertEqual(results[probe], 1)
+
+    def test_dbsize(self):
+        probe = 'dbsize'
+        response = self.api_session.get('/@monitor/{0}'.format(probe))
+        self.assertEqual(200, response.status_code)
+        results = response.json()
+        self.assertEqual(results[probe], 0)
+
+    def test_objectcount(self):
+        probe = 'objectcount'
+        response = self.api_session.get('/@monitor/{0}'.format(probe))
+        self.assertEqual(200, response.status_code)
+        results = response.json()
+        self.assertEqual(results[probe], 0)

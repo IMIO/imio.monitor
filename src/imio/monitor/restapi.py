@@ -2,6 +2,7 @@
 from DateTime import DateTime
 from plone import api
 from plone.rest.service import Service
+from Zope2 import app as App
 from zope.interface import implementer
 from zope.publisher.interfaces import IPublishTraverse
 
@@ -63,6 +64,30 @@ class Monitor(Service):
             if user.getProperty('last_login_time') > (DateTime() - 90):
                 valid_users.append(user)
         return len(valid_users)
+
+    @property
+    def dbsize(self, database='main'):
+        """size of the database (default=main) in bytes"""
+        app = App()
+        try:
+            db = app.Control_Panel.Database[database]
+            return db._p_jar.db().getSize()
+        except KeyError:
+            return 0
+        finally:
+            app._p_jar.close()
+
+    @property
+    def objectcount(connection, database='main'):
+        """number of object in the database (default=main)"""
+        app = App()
+        try:
+            db = app.Control_Panel.Database[database]
+            return db._p_jar.db().objectCount()
+        except KeyError:
+            return 0
+        finally:
+            app._p_jar.close()
 
     def render(self):
         if len(self.params) == 0:
